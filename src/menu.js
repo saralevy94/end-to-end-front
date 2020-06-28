@@ -1,17 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 
-class Menu extends React.Component{
-    render(){
-        return <nav>
-            <ul>
-                <li>בנים</li>
-                <li>בנות</li>
-                <li>נשים</li>
-                <li>גברים</li>
-            </ul>
-        </nav>
-        
 
-    }
+export default function Menu() {
+    const categoryList = ["Boys", "Girls", "Men", "Women"]
+    const [category, setCategory] = useState('')
+    const div = document.getElementsByClassName('divR')[0]
+
+
+
+    return <nav>
+        <ul>
+            {categoryList.map(c =>
+
+                <li onMouseEnter={(() => setCategory(c))}>{c}</li>
+            )}
+
+        </ul>
+        <div onMouseLeave = {(()=> setCategory(''))}>
+            {category}
+
+        </div>
+    </nav>
+
+
 }
-export default Menu
+
